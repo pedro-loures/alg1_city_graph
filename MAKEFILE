@@ -1,0 +1,13 @@
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -O2
+
+SRC = main.cpp graph.cpp scc.cpp utils.cpp
+HEADERS = graph.hpp scc.hpp utils.hpp
+
+TARGET = main
+
+$(TARGET): $(SRC) $(HEADERS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+
+clean:
+	rm -f $(TARGET)
