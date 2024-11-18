@@ -12,7 +12,7 @@ src/
 
 
 #include "grafo.hpp"
-#include "scc.hpp"
+#include "cfc.hpp"
 #include <iostream>
 #include <vector>
 
@@ -37,8 +37,8 @@ int main() {
         return 1; // retorno de erro
     }
 
-    # Retornar capital
-    std::cout << "Capital: " << capital << endl;
+    // Retornar capital
+    std::cout << "Capital: " << capital << std::endl;
 
     // *********** /Definindo a capital ********
     // *********** Batalhões *******************

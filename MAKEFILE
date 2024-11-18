@@ -1,13 +1,21 @@
-CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -O2
+CC = g++
+CFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Wformat -Wconversion -Werror # add -Wsecurity
 
-SRC = main.cpp graph.cpp scc.cpp utils.cpp
-HEADERS = graph.hpp scc.hpp utils.hpp
+SRC = main.cpp grafo.cpp cfc.cpp utils.cpp
+HEADERS = grafo.hpp cfc.hpp utils.hpp
 
-TARGET = main
+# Define OBJS as the object files corresponding to the source files
+OBJS = $(SRC:.cpp=.o)
 
-$(TARGET): $(SRC) $(HEADERS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+TARGET = tp1
 
+# Build rules
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+%.o: %.cpp $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean rule
 clean:
-	rm -f $(TARGET)
+	rm -f $(OBJS) $(TARGET)
