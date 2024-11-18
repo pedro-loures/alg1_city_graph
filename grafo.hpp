@@ -6,7 +6,7 @@
 
 class Grafo {
 public:
-    int numCentros;
+    int numNodos;
     std::vector<std::vector<int>> adj;     // Lista de adjacência
     std::vector<std::vector<int>> revAdj;  // Lista de adjacência reversa (para cálculo de CFC)
 
