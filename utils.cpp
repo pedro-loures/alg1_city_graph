@@ -1,8 +1,34 @@
 #include "utils.hpp"
-#include <queue>
-#include <vector>
-#include <climits>
 
+#include <string>
+#include <unordered_map>
+
+
+    IndexadorCidade::IndexadorCidade() : proxIdx(0) {}
+
+    int IndexadorCidade::getAddCidade(const std::string& nomeCidade) {
+        auto iter = cidadeParaIdx.find(nomeCidade);
+        if (iter != cidadeParaIdx.end()) {
+            return iter->second;
+        }
+        cidadeParaIdx[nomeCidade] = proxIdx;
+        idxParaCidade[proxIdx] = nomeCidade;
+        return proxIdx++;
+    }
+
+    std::string IndexadorCidade::getCidade(int idx) const {
+        auto iter = idxParaCidade.find(idx);
+        if (iter != idxParaCidade.end()) {
+            return iter->second;
+        }
+        throw std::out_of_range("Índice de cidade não encontrado: " + std::to_string(idx));
+    }
+
+    int IndexadorCidade::countCidades() const {
+        return proxIdx;
+    }
+
+// Função principal para encontrar a capital
 int acharCapital(const Grafo &grafo) {
     int melhorCapital = -1;
     int menorMaxDistancia = INT_MAX;

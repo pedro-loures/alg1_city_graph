@@ -1,6 +1,7 @@
 #ifndef GRAFO_HPP
 #define GRAFO_HPP
 
+#include <iostream>
 #include <vector>
 #include <unordered_set>
 
